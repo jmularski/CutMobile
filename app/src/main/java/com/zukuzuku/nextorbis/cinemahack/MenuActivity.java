@@ -1,5 +1,6 @@
 package com.zukuzuku.nextorbis.cinemahack;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -64,10 +64,9 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        //Toast.makeText(v.getContext(),"1", Toast.LENGTH_LONG).show();
-                        Toast.makeText(v.getContext(),"Go to tickets", Toast.LENGTH_LONG).show();
-                        // Intent browsermaps= new Intent (Intent.ACTION_VIEW, Uri.parse("https://goo.gl/maps/2ukcNM8cSHu"));
-                        //startActivity(browsermaps);
+
+                        gobuy();
+
 
                     }
                 });
@@ -77,10 +76,7 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(v.getContext(),"Go to tickets", Toast.LENGTH_LONG).show();
-
-                        // Intent browsermaps= new Intent (Intent.ACTION_VIEW, Uri.parse("https://goo.gl/maps/9HLwNfUgdGm"));
-                        // startActivity(browsermaps);
+                        gobuy();
 
                     }
                 });
@@ -91,10 +87,7 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        //  Toast.makeText(v.getContext(),"3", Toast.LENGTH_LONG).show();
-                        Toast.makeText(v.getContext(),"Go to tickets", Toast.LENGTH_LONG).show();
-                        ///Intent browsermaps= new Intent (Intent.ACTION_VIEW, Uri.parse("https://goo.gl/maps/2pKRGLJ1kFL2"));
-                        // startActivity(browsermaps);
+                        gobuy();
 
                     }
                 });
@@ -105,10 +98,7 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        //  Toast.makeText(v.getContext(),"3", Toast.LENGTH_LONG).show();
-                        Toast.makeText(v.getContext(),"Go to tickets", Toast.LENGTH_LONG).show();
-                        //Intent browsermaps= new Intent (Intent.ACTION_VIEW, Uri.parse("https://goo.gl/maps/2pKRGLJ1kFL2"));
-                        // startActivity(browsermaps);
+                        gobuy();
 
                     }
                 });
@@ -119,10 +109,7 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        //  Toast.makeText(v.getContext(),"3", Toast.LENGTH_LONG).show();
-                        Toast.makeText(v.getContext(),"Go to tickets", Toast.LENGTH_LONG).show();
-                        //Intent browsermaps= new Intent (Intent.ACTION_VIEW, Uri.parse("https://goo.gl/maps/2pKRGLJ1kFL2"));
-                        // startActivity(browsermaps);
+                        gobuy();
 
                     }
                 });
@@ -139,5 +126,10 @@ public class MenuActivity extends AppCompatActivity {
             return view;
         }
     }
+    public void  gobuy () {
 
+        Intent intent = new Intent(this, CinameInfoActivity.class);
+        startActivity(intent);
+
+    }
 }
