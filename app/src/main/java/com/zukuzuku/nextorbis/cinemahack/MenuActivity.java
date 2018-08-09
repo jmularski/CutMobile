@@ -23,7 +23,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
         ListView listView_events=(ListView)findViewById(R.id.listView_cinemas);
 
         MenuActivity .CustomAdapter customAdapter=new MenuActivity .CustomAdapter();
