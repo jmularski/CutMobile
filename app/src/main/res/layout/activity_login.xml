@@ -28,6 +28,16 @@
         android:id="@+id/button_signin" />
 
     <Button
+        android:text="Login with Facebook"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_signin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:id="@+id/button_facebook" />
+
+
+    <Button
         android:text="Login"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
