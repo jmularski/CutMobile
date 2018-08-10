@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cloudrail.si.CloudRail;
@@ -17,18 +18,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-    Button login, signin, facebook;
+    Button login, facebook;
+    TextView signin;
     EditText username, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         CloudRail.setAppKey("5b6cb81b70a77f7d86b61746");
-        login= (Button) findViewById(R.id.buttonlogin);
-        signin=(Button) findViewById(R.id.button_signin);
-        facebook = (Button) findViewById(R.id.button_facebook);
-        username =(EditText) findViewById(R.id.editText_user);
-        password= (EditText) findViewById(R.id.edittextPassword);
+        login= (Button) findViewById(R.id.buttonLogin);
+        signin=(TextView) findViewById(R.id.sign_up);
+        facebook = (Button) findViewById(R.id.buttonFbLogin);
+        username =(EditText) findViewById(R.id.fieldEmail);
+        password= (EditText) findViewById(R.id.fieldPassword);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
