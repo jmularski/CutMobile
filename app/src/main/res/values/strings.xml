@@ -7,4 +7,5 @@
     <string name="title_activity_ciname_info">CinameInfoActivity</string>
     <string name="title_activity_booked_tickets">BookedTicketsActivity</string>
     <string name="title_activity_get_tickets">getTicketsActivity</string>
+    <string name="sign_up"><u>Sign up now</u></string>
 </resources>

@@ -1,78 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".LoginActivity"
-    tools:showIn="@layout/activity_login">
-
-    <Button
-        android:text="Login"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edittextPassword"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button_login"
-        android:layout_marginBottom="5dp"
-        />
-
-    <Button
-        android:text="Sign in"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
-        android:id="@+id/button_signin" />
-
-    <Button
-        android:text="Login with Facebook"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_signin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
-        android:id="@+id/button_facebook" />
-
-
-    <Button
-        android:text="Login"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edittextPassword"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/buttonlogin"
-        android:layout_marginBottom="5dp" />
+    android:layout_height="match_parent">
 
     <ImageView
-        android:layout_height="200dp"
-        android:id="@+id/splash"
-        android:contentDescription="logo"
-        android:layout_marginTop="65dp"
-        android:layout_width="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
+        android:id = "@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText_user"
-        android:hint="User"
-        android:layout_below="@+id/splash"
-        android:layout_centerHorizontal="true" />
+        android:src = "@drawable/logo"
+        android:maxWidth="220dp"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds ="true"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
+        android:id="@+id/fieldEmail"
+        style="@style/LoginEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/edittextPassword"
+        android:layout_height="46dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edit_text_login"
+        android:fontFamily="sans-serif"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/primaryRed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"/>
+
+    <EditText
+        android:id="@+id/fieldPassword"
+        style="@style/LoginEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_login"
+        android:fontFamily="sans-serif"
         android:hint="Password"
-        android:layout_below="@+id/editText_user"
-        android:layout_alignStart="@+id/editText_user" />
+        android:inputType="textPassword"
+        android:textColorHint="@color/primaryRed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldEmail" />
 
-</RelativeLayout>
+    <View
+        android:id="@+id/dividerLogin"
+        android:layout_width="25dp"
+        android:layout_height="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/secondaryRed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fieldPassword" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/primaryRed"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/fieldPassword"
+        app:layout_constraintStart_toStartOf="@+id/fieldPassword"
+        app:layout_constraintTop_toBottomOf="@+id/dividerLogin" />
+
+    <Button
+        android:id="@+id/buttonFbLogin"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/facebookColor"
+        android:drawableStart="@drawable/ic_facebook"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:text="Login with Facebook"
+        android:textColor="@color/white"
+        android:textSize="13dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
+        app:layout_constraintStart_toStartOf="@+id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFbLogin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account? "
+            android:textSize = "10dp"/>
+        <TextView
+            android:id="@+id/sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            android:textSize = "10dp"/>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
