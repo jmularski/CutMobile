@@ -8,4 +8,7 @@
     <string name="title_activity_booked_tickets">BookedTicketsActivity</string>
     <string name="title_activity_get_tickets">getTicketsActivity</string>
     <string name="sign_up"><u>Sign up now</u></string>
+    <string name="booked">Booked tickets</string>
+    <string name="logout">logout</string>
+    <string name="Title_app"> </string>
 </resources>

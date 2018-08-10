@@ -3,6 +3,9 @@ package com.zukuzuku.nextorbis.cinemahack;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,26 +13,55 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 public class MenuActivity extends AppCompatActivity {
 
     int[] IMAGES = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
 
-    String[] NAMES= {"Tickets "," Cinema 2","Cinema 3","Cinema 4", "Cinema 5"};
+    String[] NAMES= {"Cinema 1 "," Cinema 2","Cinema 3","Cinema 4", "Cinema 5"};
 
-    String[] DESCRIPTION = {"Check out the tickets you already booked ","Description of the Cinema","Description of the Cinema ","Description of the Cinema", "Description of the Cinema"};
+    String[] DESCRIPTION = {"Description of the Cinema","Description of the Cinema","Description of the Cinema ","Description of the Cinema", "Description of the Cinema"};
 
     String[] URL={"URL1","URL2","URL3","URL4","URL5"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        Toolbar toolbar= findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
         ListView listView_events=(ListView)findViewById(R.id.listView_cinemas);
 
         MenuActivity .CustomAdapter customAdapter=new MenuActivity .CustomAdapter();
 
         listView_events.setAdapter(customAdapter);
+
+        getSupportActionBar().setIcon(R.drawable.logobar);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater= getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_booked:
+                gobooked();
+                break;
+            case R.id.action_logout:
+                gologin();
+                break;
+            default:
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     class CustomAdapter extends BaseAdapter {
 
 
@@ -64,9 +96,7 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-
-                        gobooked();
-
+                        gobuy();
 
                     }
                 });
@@ -136,6 +166,12 @@ public class MenuActivity extends AppCompatActivity {
     public void gobooked() {
 
         Intent intent = new Intent(this, BookedTicketsActivity.class);
+        startActivity(intent);
+
+    }
+    public void  gologin () {
+
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
 
     }
