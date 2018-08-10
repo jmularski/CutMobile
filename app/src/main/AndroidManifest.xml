@@ -43,6 +43,11 @@
             android:name=".getTicketsActivity"
             android:label="@string/title_activity_get_tickets"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <receiver android:name="Button_listener">
+            <intent-filter>
+                <action android:name="button_clicked"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
