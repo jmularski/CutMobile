@@ -14,13 +14,22 @@ import com.cloudrail.si.CloudRail;
 import com.cloudrail.si.interfaces.Profile;
 import com.cloudrail.si.services.Facebook;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.CallAdapter;
+import retrofit2.HttpException;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     Button login, facebook;
     TextView signin;
     EditText username, password;
+    private MainService mAPIService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         username =(EditText) findViewById(R.id.fieldEmail);
         password= (EditText) findViewById(R.id.fieldPassword);
 
+        mAPIService = APIUtils.getAPIService();
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login ( username.getText().toString().trim(), password.getText().toString().trim());
-                //login();
+                login(username.getText().toString().trim(), password.getText().toString().trim());
             }
         });
         facebook.setOnClickListener(new View.OnClickListener() {
@@ -68,20 +78,26 @@ public class LoginActivity extends AppCompatActivity {
 
         });
     }
+
     //hard coded user
     public void login (String user, String pass) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("email", user);
+        map.put("password", pass);
+        Call<UserPOJO> call = mAPIService.loginUser(map);
+        call.enqueue(new Callback<UserPOJO>() {
+            @Override
+            public void onResponse(Call<UserPOJO> call, Response<UserPOJO> response) {
+                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                intent.putExtra("userId", response.body().getId());
+                startActivity(intent);
+            }
 
-        if ((user.equals("cut"))&& (pass.equals("1234"))){
-            Toast.makeText(this,"good", Toast.LENGTH_LONG).show();
+            @Override
+            public void onFailure(Call<UserPOJO> call, Throwable t) {
 
-            Intent intent = new Intent(this, MenuActivity.class);
-            startActivity(intent);
-
-
-        }else{
-            Toast.makeText(LoginActivity.this,"incorrect", Toast.LENGTH_LONG).show();
-
-        }
+            }
+        });
     }
 
     public void  gosingin () {

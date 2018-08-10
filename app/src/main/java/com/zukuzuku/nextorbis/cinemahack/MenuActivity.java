@@ -3,6 +3,7 @@ package com.zukuzuku.nextorbis.cinemahack;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,6 +16,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MenuActivity extends AppCompatActivity {
 
     int[] IMAGES = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
@@ -24,21 +29,36 @@ public class MenuActivity extends AppCompatActivity {
     String[] DESCRIPTION = {"Description of the Cinema","Description of the Cinema","Description of the Cinema ","Description of the Cinema", "Description of the Cinema"};
 
     String[] URL={"URL1","URL2","URL3","URL4","URL5"};
+
+    private MainService mAPIService;
+    void getCinemas() {
+        Call<CinemaPOJO> call = mAPIService.getCinemas();
+        call.enqueue(new Callback<CinemaPOJO>() {
+            @Override
+            public void onResponse(Call<CinemaPOJO> call, Response<CinemaPOJO> response) {
+                NAMES = response.body().getCinemaNames().toArray(new String[0]);
+                ListView listView_events = (ListView) findViewById(R.id.listView_cinemas);
+                MenuActivity.CustomAdapter customAdapter = new MenuActivity.CustomAdapter();
+                listView_events.setAdapter(customAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<CinemaPOJO> call, Throwable t) {
+
+            }
+        });
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        mAPIService = APIUtils.getAPIService();
+        getCinemas();
         Toolbar toolbar= findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         ListView listView_events=(ListView)findViewById(R.id.listView_cinemas);
-
-        MenuActivity .CustomAdapter customAdapter=new MenuActivity .CustomAdapter();
-
-        listView_events.setAdapter(customAdapter);
-
         getSupportActionBar().setIcon(R.drawable.logobar);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater= getMenuInflater();
@@ -67,7 +87,7 @@ public class MenuActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return IMAGES.length;
+            return NAMES.length;
         }
 
         @Override
