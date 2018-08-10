@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".getTicketsActivity">
+
+    <ImageView
+        android:id="@+id/cinema_imageview_get"
+        android:layout_width="314dp"
+        android:layout_height="183dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/ic_launcher_background"
+        android:contentDescription="logo" />
+
+    <TextView
+        android:id="@+id/textView_tickets_info"
+        android:layout_width="303dp"
+        android:layout_height="152dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="246dp"
+        android:text="  You reserved 1 ticket for 19:00pm to 20:00pm " />
+
+    <Button
+        android:id="@+id/button_get_tickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="82dp"
+        android:text="Get tickets" />
+
+
+</RelativeLayout>

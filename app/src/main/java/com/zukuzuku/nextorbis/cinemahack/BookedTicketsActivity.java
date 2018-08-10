@@ -11,22 +11,22 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MenuActivity extends AppCompatActivity {
+public class BookedTicketsActivity extends AppCompatActivity {
 
-    int[] IMAGES = {R.mipmap.ic_launcher, R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
+    int[] IMAGES = {R.mipmap.ic_launcher, R.mipmap.ic_launcher};
 
-    String[] NAMES= {"Tickets "," Cinema 2","Cinema 3","Cinema 4", "Cinema 5"};
+    String[] NAMES= {"Tickets 1 "," Tickets 2"};
 
-    String[] DESCRIPTION = {"Check out the tickets you already booked ","Description of the Cinema","Description of the Cinema ","Description of the Cinema", "Description of the Cinema"};
+    String[] DESCRIPTION = {"Description of the Cinema ","Description of the Cinema"};
 
-    String[] URL={"URL1","URL2","URL3","URL4","URL5"};
+    String[] URL={"URL1","URL2"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-        ListView listView_events=(ListView)findViewById(R.id.listView_cinemas);
+        setContentView(R.layout.activity_booked_tickets);
+        ListView listView_events=(ListView)findViewById(R.id.listView_cinemas_booked);
 
-        MenuActivity .CustomAdapter customAdapter=new MenuActivity .CustomAdapter();
+        BookedTicketsActivity .CustomAdapter customAdapter=new BookedTicketsActivity .CustomAdapter();
 
         listView_events.setAdapter(customAdapter);
     }
@@ -65,7 +65,7 @@ public class MenuActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        gobooked();
+                        gotake();
 
 
                     }
@@ -76,40 +76,7 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        gobuy();
-
-                    }
-                });
-
-
-            }else if(URL[i].equals("URL3")){
-                button_event_check.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        gobuy();
-
-                    }
-                });
-
-
-            }else if(URL[i].equals("URL4")){
-                button_event_check.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        gobuy();
-
-                    }
-                });
-
-
-            }else if(URL[i].equals("URL5")){
-                button_event_check.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        gobuy();
+                        gotake();
 
                     }
                 });
@@ -126,16 +93,9 @@ public class MenuActivity extends AppCompatActivity {
             return view;
         }
     }
-    public void  gobuy () {
+    public void  gotake () {
 
-        Intent intent = new Intent(this, CinameInfoActivity.class);
-        startActivity(intent);
-
-    }
-
-    public void gobooked() {
-
-        Intent intent = new Intent(this, BookedTicketsActivity.class);
+        Intent intent = new Intent(this, getTicketsActivity.class);
         startActivity(intent);
 
     }

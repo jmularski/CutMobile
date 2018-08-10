@@ -5,4 +5,6 @@
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_signup">signupActivity</string>
     <string name="title_activity_ciname_info">CinameInfoActivity</string>
+    <string name="title_activity_booked_tickets">BookedTicketsActivity</string>
+    <string name="title_activity_get_tickets">getTicketsActivity</string>
 </resources>
